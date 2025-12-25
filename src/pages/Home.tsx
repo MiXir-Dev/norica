@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Award, Users, MapPin, Phone, Mail, Instagram } from "lucide-react";
+import { ArrowRight, Sparkles, Award, Users, MapPin, Phone, Mail, Instagram, Clock } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero-home.jpg";
@@ -279,7 +279,7 @@ const Home = () => {
           <motion.div {...fadeInSection}>
             <h2 className="text-2xl md:text-4xl font-light mb-8">Visit Us</h2>
             <div className="space-y-6">
-              {[MapPin, Phone, Mail, Instagram].map((Icon, i) => (
+              {[MapPin, Phone, Mail, Instagram, Clock].map((Icon, i) => (
                 <div key={i} className="flex gap-4 items-start">
                   <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
                     <Icon className="w-4 h-4 text-primary/80" />
@@ -289,7 +289,8 @@ const Home = () => {
                       "105 rue Chabanel Ouest, Montreal",
                       "(514) 550-4633",
                       "noricaspa@gmail.com",
-                      "@noricaspa"
+                      "@noricaspa",
+                      "Monday – Saturday: 9:00 AM – 6:00 PM"
                     ][i]}
                   </p>
                 </div>
