@@ -108,7 +108,6 @@ const Navigation = () => {
                   w-screen max-w-none p-0
                   bg-background
                   border-r border-border/30
-                  [&>button]:hidden
                 "
               >
                 <VisuallyHidden>
