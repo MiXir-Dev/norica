@@ -115,7 +115,7 @@ const Navigation = () => {
                 </VisuallyHidden>
 
                 {/* LAYOUT */}
-                <div className="flex h-full flex-col items-center">
+                <div className="flex h-[100dvh] flex-col items-center">
                   {/* TOP: Brand + location (clean, not floating) */}
                   <div className="px-8 pt-16 pb-8 border-b border-border/20">
                    <Link
