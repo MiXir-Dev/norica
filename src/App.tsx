@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Training from "./pages/Training";
 import Rental from "./pages/Rental";
-import NotFound from "./pages/NotFound";
+// import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -23,7 +23,8 @@ const App = () => (
           <Route path="/training" element={<Training />} />
           <Route path="/rental" element={<Rental />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="*" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
