@@ -9,15 +9,21 @@ import {
 } from "@/components/ui/sheet";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Logo from "@/components/Logo";
-import { NAV_LINKS } from "@/consts/navigation";
+import { NAV_LINKS, NAV_LINKS_FR } from "@/consts/navigation";
 import { preloadRoute } from "@/consts/routes";
 import { BOOK_NOW_URL, INSTAGRAM_URL, PHONE_TEL } from "@/consts/links";
 
 type NavMobileProps = {
   isScrolled: boolean;
+  isFrench: boolean;
+  languageSwitch: {
+    href: string;
+    label: string;
+  };
+  bookLabel: string;
 };
 
-const NavMobile = ({ isScrolled }: NavMobileProps) => (
+const NavMobile = ({ isScrolled, isFrench, languageSwitch, bookLabel }: NavMobileProps) => (
   <div className="flex items-center gap-6 md:hidden ml-auto">
     <a
       href={PHONE_TEL}
@@ -65,7 +71,7 @@ const NavMobile = ({ isScrolled }: NavMobileProps) => (
 
           <nav className="flex-1 px-8 py-10">
             <div className="mx-auto flex max-w-sm flex-col gap-2">
-              {NAV_LINKS.map((link) => (
+              {(isFrench ? NAV_LINKS_FR : NAV_LINKS).map((link) => (
                 <SheetClose asChild key={link.to}>
                   <Link
                     to={link.to}
@@ -84,16 +90,16 @@ const NavMobile = ({ isScrolled }: NavMobileProps) => (
           </nav>
 
           <div className="px-8 pb-10 pt-6 border-t border-border/20">
-            <SheetClose asChild>
-              <a
-                href={BOOK_NOW_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary block text-center"
-              >
-                Book Now
-              </a>
-            </SheetClose>
+                    <SheetClose asChild>
+                      <a
+                        href={BOOK_NOW_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary block text-center"
+                      >
+                        {bookLabel}
+                      </a>
+                    </SheetClose>
 
             <div className="mt-6 flex items-center justify-center">
               <a
@@ -106,6 +112,19 @@ const NavMobile = ({ isScrolled }: NavMobileProps) => (
                 <Instagram size={16} />
                 @noricaspa
               </a>
+            </div>
+
+            <div className="mt-6 flex items-center justify-center">
+              <SheetClose asChild>
+                <Link
+                  to={languageSwitch.href}
+                  onMouseEnter={() => preloadRoute(languageSwitch.href)}
+                  onFocus={() => preloadRoute(languageSwitch.href)}
+                  className="inline-flex items-center rounded-full border border-border/40 px-4 py-1 text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground"
+                >
+                  {languageSwitch.label}
+                </Link>
+              </SheetClose>
             </div>
           </div>
         </div>

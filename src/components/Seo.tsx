@@ -9,6 +9,8 @@ type SeoProps = {
   path?: string;
   jsonLd?: Record<string, unknown>[];
   image?: string;
+  lang?: string;
+  alternates?: { hrefLang: string; href: string }[];
 };
 
 const setMetaTag = (selector: string, name: string, content: string) => {
@@ -38,20 +40,33 @@ const setCanonical = (url: string) => {
   link.href = url;
 };
 
-const setAlternates = (url: string) => {
+const setAlternates = (url: string, alternates?: { hrefLang: string; href: string }[]) => {
   const existing = document.querySelectorAll('link[data-seo="alternate"]');
   existing.forEach((node) => node.remove());
-  const alternates = [
+  const resolved = alternates ?? [
     { hrefLang: "en-CA", href: url },
     { hrefLang: "fr-CA", href: url },
   ];
-  alternates.forEach((alternate) => {
+  resolved.forEach((alternate) => {
     const link = document.createElement("link");
     link.rel = "alternate";
     link.hreflang = alternate.hrefLang;
     link.href = alternate.href;
     link.setAttribute("data-seo", "alternate");
     document.head.appendChild(link);
+  });
+};
+
+const setOgLocaleAlternates = (alternates?: { hrefLang: string; href: string }[]) => {
+  const existing = document.querySelectorAll('meta[data-seo="og:locale:alternate"]');
+  existing.forEach((node) => node.remove());
+  if (!alternates) return;
+  alternates.forEach((alternate) => {
+    const meta = document.createElement("meta");
+    meta.setAttribute("property", "og:locale:alternate");
+    meta.setAttribute("content", alternate.hrefLang.replace("-", "_"));
+    meta.setAttribute("data-seo", "og:locale:alternate");
+    document.head.appendChild(meta);
   });
 };
 
@@ -66,7 +81,7 @@ const setJsonLd = (jsonLd?: Record<string, unknown>[]) => {
   document.head.appendChild(script);
 };
 
-const Seo = ({ title, description, keywords, path, jsonLd, image }: SeoProps) => {
+const Seo = ({ title, description, keywords, path, jsonLd, image, lang, alternates }: SeoProps) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -74,6 +89,9 @@ const Seo = ({ title, description, keywords, path, jsonLd, image }: SeoProps) =>
     const url = `${SITE_URL}${resolvedPath}`;
     const imageUrl = image ?? SITE_LOGO_URL;
     document.title = title;
+    if (lang) {
+      document.documentElement.lang = lang;
+    }
 
     setMetaTag('meta[name="description"]', "description", description);
     setMetaTag('meta[name="keywords"]', "keywords", (keywords ?? []).join(", "));
@@ -82,15 +100,19 @@ const Seo = ({ title, description, keywords, path, jsonLd, image }: SeoProps) =>
     setMetaTag('meta[property="og:description"]', "og:description", description);
     setMetaTag('meta[property="og:url"]', "og:url", url);
     setMetaTag('meta[property="og:image"]', "og:image", imageUrl);
+    if (lang) {
+      setMetaTag('meta[property="og:locale"]', "og:locale", lang.replace("-", "_"));
+    }
 
     setMetaTag('meta[name="twitter:title"]', "twitter:title", title);
     setMetaTag('meta[name="twitter:description"]', "twitter:description", description);
     setMetaTag('meta[name="twitter:image"]', "twitter:image", imageUrl);
 
     setCanonical(url);
-    setAlternates(url);
+    setAlternates(url, alternates);
+    setOgLocaleAlternates(alternates);
     setJsonLd(jsonLd);
-  }, [title, description, keywords, path, jsonLd, image, location.pathname]);
+  }, [title, description, keywords, path, jsonLd, image, lang, alternates, location.pathname]);
 
   return null;
 };

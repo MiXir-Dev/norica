@@ -2,7 +2,17 @@ import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-rental.jpg";
 import { RENTAL_APP_URL } from "@/consts/links";
 
-const RentalHero = () => (
+type RentalHeroProps = {
+  title?: string;
+  description?: string;
+  ctaLabel?: string;
+};
+
+const RentalHero = ({
+  title = "GentleMax Pro Rental",
+  description = "Start or expand your laser practice with our comprehensive equipment rental program",
+  ctaLabel = "Apply for Rental",
+}: RentalHeroProps) => (
   <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
     <div className="absolute inset-0">
       <img
@@ -10,7 +20,7 @@ const RentalHero = () => (
         alt="GentleMax Pro rental program"
         className="w-full h-full object-cover"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
     </div>
@@ -23,7 +33,7 @@ const RentalHero = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          GentleMax Pro Rental
+          {title}
         </motion.h1>
         <motion.p
           className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-12 leading-relaxed"
@@ -31,7 +41,7 @@ const RentalHero = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          Start or expand your laser practice with our comprehensive equipment rental program
+          {description}
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -44,7 +54,7 @@ const RentalHero = () => (
             rel="noopener noreferrer"
             className="btn-primary"
           >
-            Apply for Rental
+            {ctaLabel}
           </a>
         </motion.div>
       </div>

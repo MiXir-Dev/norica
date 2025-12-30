@@ -1,9 +1,22 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import treatmentBg from "@/assets/treatment-bg.png";
 import { fadeInSection } from "@/consts/animations";
 import { preloadRoute } from "@/consts/routes";
 
-const HomeTrainingCta = () => (
+type HomeTrainingCtaProps = {
+  title?: string;
+  description?: string;
+  buttonLabel?: string;
+  href?: string;
+};
+
+const HomeTrainingCta = ({
+  title = "Become a Certified Laser Technician",
+  description = "Comprehensive, professional training focused on GentleMax Pro technology.",
+  buttonLabel = "Apply for Training",
+  href = "/training",
+}: HomeTrainingCtaProps) => (
   <section className="relative py-24 md:py-32 overflow-hidden">
     <div className="absolute inset-0">
       <img
@@ -30,22 +43,22 @@ const HomeTrainingCta = () => (
 
         <div className="relative text-center max-w-lg">
           <h2 className="text-2xl md:text-4xl font-light text-white mb-2 whitespace-nowrap drop-shadow-sm">
-            Become a Certified Laser Technician
+            {title}
           </h2>
 
           <p className="text-base md:text-lg text-white/70 mb-8 leading-relaxed">
-            Comprehensive, professional training focused on GentleMax Pro technology.
+            {description}
           </p>
 
-          <a
-            href="/training"
+          <Link
+            to={href}
             className="training-cta-btn inline-block"
             aria-label="Apply for laser technician training program"
-            onMouseEnter={() => preloadRoute("/training")}
-            onFocus={() => preloadRoute("/training")}
+            onMouseEnter={() => preloadRoute(href)}
+            onFocus={() => preloadRoute(href)}
           >
-            Apply for Training
-          </a>
+            {buttonLabel}
+          </Link>
         </div>
       </motion.div>
     </div>

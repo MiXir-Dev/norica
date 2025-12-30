@@ -21,3 +21,4 @@ export const ADDRESS_LINES = [
 ];
 
 export const OPERATING_HOURS = "Monday – Saturday: 9:00 AM – 6:00 PM";
+export const OPERATING_HOURS_FR = "Lundi – samedi : 9 h – 18 h";

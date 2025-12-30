@@ -5,11 +5,16 @@ import {
   EMAIL_URL,
   MAPS_URL,
   OPERATING_HOURS,
+  OPERATING_HOURS_FR,
   PHONE_DISPLAY,
   PHONE_TEL,
 } from "@/consts/links";
 
-const FooterContact = () => (
+type FooterContactProps = {
+  language?: "en" | "fr";
+};
+
+const FooterContact = ({ language = "en" }: FooterContactProps) => (
   <div className="space-y-6">
     <h4 className="text-sm uppercase tracking-widest text-primary-foreground/70">
       Contact
@@ -41,7 +46,7 @@ const FooterContact = () => (
       </a>
 
       <div className="pt-2 text-primary-foreground/60 leading-relaxed">
-        {OPERATING_HOURS}
+        {language === "fr" ? OPERATING_HOURS_FR : OPERATING_HOURS}
         <br />
       </div>
     </div>

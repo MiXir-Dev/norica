@@ -2,15 +2,28 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "@/consts/animations";
 import { TRAINING_PREREQUISITES } from "@/consts/training";
 
-const TrainingPrerequisites = () => (
+type Prerequisite = {
+  title: string;
+  description: string;
+};
+
+type TrainingPrerequisitesProps = {
+  heading?: string;
+  items?: Prerequisite[];
+};
+
+const TrainingPrerequisites = ({
+  heading = "Prerequisites",
+  items = TRAINING_PREREQUISITES,
+}: TrainingPrerequisitesProps) => (
   <section className="section-padding">
     <div className="container-wide max-w-3xl mx-auto">
       <motion.div className="text-center mb-12" {...fadeInUp}>
-        <h2 className="mb-6 font-light">Prerequisites</h2>
+        <h2 className="mb-6 font-light">{heading}</h2>
       </motion.div>
 
       <div className="space-y-6">
-        {TRAINING_PREREQUISITES.map((item, index) => (
+        {items.map((item, index) => (
           <motion.div
             key={item.title}
             className="bg-secondary/50 p-8 rounded-3xl shadow-md hover:shadow-lg transition-shadow"

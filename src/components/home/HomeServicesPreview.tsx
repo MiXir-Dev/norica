@@ -5,11 +5,19 @@ import { HOME_SERVICES } from "@/consts/home";
 import { fadeInSection } from "@/consts/animations";
 import { preloadRoute } from "@/consts/routes";
 
-const HomeServicesPreview = () => (
+type HomeServicesPreviewProps = {
+  services?: typeof HOME_SERVICES;
+  ctaLabel?: string;
+};
+
+const HomeServicesPreview = ({
+  services = HOME_SERVICES,
+  ctaLabel = "View Services",
+}: HomeServicesPreviewProps) => (
   <section className="section-padding bg-secondary/30">
     <div className="container-wide">
       <motion.div {...fadeInSection} className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {HOME_SERVICES.map((service) => (
+        {services.map((service) => (
           <Link
             key={service.title}
             to={service.href}
@@ -33,7 +41,7 @@ const HomeServicesPreview = () => (
 
               <div className="inline-flex items-center gap-2 text-sm text-primary">
                 <span className="relative">
-                  View Services
+                  {ctaLabel}
                   <span className="absolute left-0 -bottom-0.5 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
                 </span>
 

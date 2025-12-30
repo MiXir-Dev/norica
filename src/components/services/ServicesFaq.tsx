@@ -8,21 +8,36 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const ServicesFaq = () => (
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+type ServicesFaqProps = {
+  heading?: string;
+  subheading?: string;
+  items?: FaqItem[];
+};
+
+const ServicesFaq = ({
+  heading = "Frequently Asked Questions",
+  subheading = "Laser Hair Removal — GentleMax Pro",
+  items = FAQ_ITEMS,
+}: ServicesFaqProps) => (
   <section className="section-padding bg-background" aria-labelledby="faq-heading">
     <div className="container-wide">
       <motion.div {...fadeIn} className="max-w-3xl mb-12 md:mb-16">
         <h2 id="faq-heading" className="text-2xl md:text-4xl font-light mb-4">
-          Frequently Asked Questions
+          {heading}
         </h2>
         <p className="text-sm uppercase tracking-wider text-muted-foreground">
-          Laser Hair Removal — GentleMax Pro
+          {subheading}
         </p>
       </motion.div>
 
       <motion.div {...fadeIn} className="max-w-3xl">
         <Accordion type="single" collapsible className="space-y-0">
-          {FAQ_ITEMS.map((item, index) => (
+          {items.map((item, index) => (
             <AccordionItem
               key={index}
               value={`item-${index}`}

@@ -1,13 +1,18 @@
 import { Instagram, Mail, Phone } from "lucide-react";
 import Logo from "@/components/Logo";
 import { EMAIL_URL, INSTAGRAM_URL, PHONE_TEL } from "@/consts/links";
+import { FOOTER_BRAND_TEXT } from "@/consts/footerCopy";
 
-const FooterBrand = () => (
+type FooterBrandProps = {
+  language?: "en" | "fr";
+};
+
+const FooterBrand = ({ language = "en" }: FooterBrandProps) => (
   <div className="space-y-6">
     <Logo variant="light" size="md" />
 
     <p className="text-primary-foreground/80 leading-relaxed max-w-sm">
-      Laser clinic and academy in Montreal, offering advanced aesthetic treatments and professional training.
+      {FOOTER_BRAND_TEXT[language]}
     </p>
 
     <div className="flex gap-4 pt-2">

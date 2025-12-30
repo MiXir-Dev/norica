@@ -9,7 +9,6 @@ import HomeContact from "@/components/home/HomeContact";
 import Seo from "@/components/Seo";
 import { PAGE_META } from "@/consts/seoMeta";
 import { PAGE_JSONLD } from "@/consts/seoJsonld";
-import LocalizedSummary from "@/components/seo/LocalizedSummary";
 import InternalLinks from "@/components/seo/InternalLinks";
 
 const Home = () => {
@@ -26,7 +25,6 @@ const Home = () => {
       <HomeServicesPreview />
       <HomeTrainingCta />
       <HomeContact />
-      <LocalizedSummary summaryKey="home" />
       <InternalLinks />
       <Footer />
     </div>

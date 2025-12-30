@@ -2,15 +2,28 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "@/consts/animations";
 import { RENTAL_IDEAL_FOR } from "@/consts/rental";
 
-const RentalIdealFor = () => (
+type IdealItem = {
+  title: string;
+  description: string;
+};
+
+type RentalIdealForProps = {
+  heading?: string;
+  items?: IdealItem[];
+};
+
+const RentalIdealFor = ({
+  heading = "Ideal For",
+  items = RENTAL_IDEAL_FOR,
+}: RentalIdealForProps) => (
   <section className="section-padding">
     <div className="container-wide max-w-3xl mx-auto">
       <motion.div className="text-center mb-12" {...fadeInUp}>
-        <h2 className="mb-6 font-light">Ideal For</h2>
+        <h2 className="mb-6 font-light">{heading}</h2>
       </motion.div>
 
       <div className="space-y-6">
-        {RENTAL_IDEAL_FOR.map((item, index) => (
+        {items.map((item, index) => (
           <motion.div
             key={item.title}
             className="bg-secondary/50 p-8 rounded-3xl shadow-md hover:shadow-lg transition-shadow"

@@ -27,6 +27,11 @@ export const PAGE_META = {
       "Advanced laser treatments, Dermalogica facials, and accredited training programs in Montreal. Discover GentleMax Pro technology and personalized care at Norica Spa.",
     path: "/",
     keywords: DEFAULT_KEYWORDS,
+    lang: "en-CA",
+    alternates: [
+      { hrefLang: "en-CA", href: `${SITE_URL}/` },
+      { hrefLang: "fr-CA", href: `${SITE_URL}/fr` },
+    ],
   },
   services: {
     title: "Aesthetic Services | Laser Hair Removal & Facials in Montreal",
@@ -46,6 +51,11 @@ export const PAGE_META = {
       "réduction permanente des poils",
       "medical aesthetics services",
     ],
+    lang: "en-CA",
+    alternates: [
+      { hrefLang: "en-CA", href: `${SITE_URL}/services` },
+      { hrefLang: "fr-CA", href: `${SITE_URL}/fr/services` },
+    ],
   },
   training: {
     title: "Laser Training Academy | Certification Program in Montreal",
@@ -64,6 +74,11 @@ export const PAGE_META = {
       "laser safety education",
       "sécurité laser",
     ],
+    lang: "en-CA",
+    alternates: [
+      { hrefLang: "en-CA", href: `${SITE_URL}/training` },
+      { hrefLang: "fr-CA", href: `${SITE_URL}/fr/training` },
+    ],
   },
   rental: {
     title: "GentleMax Pro Rental | Laser Equipment Program in Montreal",
@@ -78,6 +93,11 @@ export const PAGE_META = {
       "laser practice support",
       "soutien pratique laser",
       "aesthetic equipment rental",
+    ],
+    lang: "en-CA",
+    alternates: [
+      { hrefLang: "en-CA", href: `${SITE_URL}/rental` },
+      { hrefLang: "fr-CA", href: `${SITE_URL}/fr/rental` },
     ],
   },
 };

@@ -2,13 +2,26 @@ import { motion } from "framer-motion";
 import { fadeInSection } from "@/consts/animations";
 import { HOME_CONTACT_ITEMS } from "@/consts/home";
 
-const HomeContact = () => (
+type HomeContactItem = {
+  icon: typeof HOME_CONTACT_ITEMS[number]["icon"];
+  text: string;
+};
+
+type HomeContactProps = {
+  title?: string;
+  items?: HomeContactItem[];
+};
+
+const HomeContact = ({
+  title = "Visit Us",
+  items = HOME_CONTACT_ITEMS,
+}: HomeContactProps) => (
   <section className="section-padding bg-background">
     <div className="container-wide grid lg:grid-cols-2 gap-12">
       <motion.div {...fadeInSection}>
-        <h2 className="text-2xl md:text-4xl font-light mb-8">Visit Us</h2>
+        <h2 className="text-2xl md:text-4xl font-light mb-8">{title}</h2>
         <div className="space-y-6">
-          {HOME_CONTACT_ITEMS.map((item, index) => (
+          {items.map((item, index) => (
             <div key={index} className="flex gap-4 items-start">
               <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
                 <item.icon className="w-4 h-4 text-primary/80" />

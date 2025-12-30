@@ -3,11 +3,19 @@ import { Check } from "lucide-react";
 import { fadeInUp } from "@/consts/animations";
 import { RENTAL_FEATURES } from "@/consts/rental";
 
-const RentalIncluded = () => (
+type RentalIncludedProps = {
+  heading?: string;
+  features?: string[];
+};
+
+const RentalIncluded = ({
+  heading = "What's Included",
+  features = RENTAL_FEATURES,
+}: RentalIncludedProps) => (
   <section className="section-padding">
     <div className="container-wide max-w-4xl mx-auto">
       <motion.div className="text-center mb-12" {...fadeInUp}>
-        <h2 className="mb-6 font-light">What's Included</h2>
+        <h2 className="mb-6 font-light">{heading}</h2>
       </motion.div>
 
       <motion.div
@@ -15,7 +23,7 @@ const RentalIncluded = () => (
         {...fadeInUp}
       >
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {RENTAL_FEATURES.map((feature) => (
+          {features.map((feature) => (
             <li key={feature} className="flex items-start gap-4">
               <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
                 <Check className="text-accent" size={18} />

@@ -9,7 +9,10 @@ const Home = lazy(routeLoaders.home);
 const Services = lazy(routeLoaders.services);
 const Training = lazy(routeLoaders.training);
 const Rental = lazy(routeLoaders.rental);
-// import NotFound from "./pages/NotFound";
+const HomeFr = lazy(routeLoaders.homeFr);
+const ServicesFr = lazy(routeLoaders.servicesFr);
+const TrainingFr = lazy(routeLoaders.trainingFr);
+const RentalFr = lazy(routeLoaders.rentalFr);
 
 const queryClient = new QueryClient();
 
@@ -22,11 +25,15 @@ const App = () => (
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/fr" element={<HomeFr />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/fr/services" element={<ServicesFr />} />
             <Route path="/training" element={<Training />} />
+            <Route path="/fr/training" element={<TrainingFr />} />
             <Route path="/rental" element={<Rental />} />
+            <Route path="/fr/rental" element={<RentalFr />} />
+            <Route path="/fr/*" element={<HomeFr />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            {/* <Route path="*" element={<NotFound />} /> */}
             <Route path="*" element={<Home />} />
           </Routes>
         </Suspense>

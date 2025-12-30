@@ -9,7 +9,6 @@ import ServicesFinalCta from "@/components/services/ServicesFinalCta";
 import Seo from "@/components/Seo";
 import { PAGE_META } from "@/consts/seoMeta";
 import { PAGE_JSONLD } from "@/consts/seoJsonld";
-import LocalizedSummary from "@/components/seo/LocalizedSummary";
 import InternalLinks from "@/components/seo/InternalLinks";
 
 const Services = () => {
@@ -27,7 +26,6 @@ const Services = () => {
       <LaserSection />
       <div className="h-px bg-border/50" />
       <ServicesFaq />
-      <LocalizedSummary summaryKey="services" />
       <InternalLinks />
       <ServicesFinalCta />
       <Footer />
