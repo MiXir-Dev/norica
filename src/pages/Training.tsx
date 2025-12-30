@@ -8,7 +8,10 @@ import TrainingCertification from "@/components/training/TrainingCertification";
 import TrainingPrerequisites from "@/components/training/TrainingPrerequisites";
 import TrainingCta from "@/components/training/TrainingCta";
 import Seo from "@/components/Seo";
-import { PAGE_JSONLD, PAGE_META } from "@/consts/seo";
+import { PAGE_META } from "@/consts/seoMeta";
+import { PAGE_JSONLD } from "@/consts/seoJsonld";
+import LocalizedSummary from "@/components/seo/LocalizedSummary";
+import InternalLinks from "@/components/seo/InternalLinks";
 
 const Training = () => {
   useEffect(() => {
@@ -24,6 +27,8 @@ const Training = () => {
       <TrainingBenefits />
       <TrainingCertification />
       <TrainingPrerequisites />
+      <LocalizedSummary summaryKey="training" />
+      <InternalLinks />
       <TrainingCta />
       <Footer />
     </div>

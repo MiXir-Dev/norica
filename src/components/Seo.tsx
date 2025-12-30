@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { SITE_LOGO_URL, SITE_URL } from "@/consts/seo";
+import { SITE_LOGO_URL, SITE_URL } from "@/consts/seoMeta";
 
 type SeoProps = {
   title: string;
@@ -38,6 +38,23 @@ const setCanonical = (url: string) => {
   link.href = url;
 };
 
+const setAlternates = (url: string) => {
+  const existing = document.querySelectorAll('link[data-seo="alternate"]');
+  existing.forEach((node) => node.remove());
+  const alternates = [
+    { hrefLang: "en-CA", href: url },
+    { hrefLang: "fr-CA", href: url },
+  ];
+  alternates.forEach((alternate) => {
+    const link = document.createElement("link");
+    link.rel = "alternate";
+    link.hreflang = alternate.hrefLang;
+    link.href = alternate.href;
+    link.setAttribute("data-seo", "alternate");
+    document.head.appendChild(link);
+  });
+};
+
 const setJsonLd = (jsonLd?: Record<string, unknown>[]) => {
   const existing = document.querySelectorAll('script[data-seo="jsonld"]');
   existing.forEach((node) => node.remove());
@@ -71,6 +88,7 @@ const Seo = ({ title, description, keywords, path, jsonLd, image }: SeoProps) =>
     setMetaTag('meta[name="twitter:image"]', "twitter:image", imageUrl);
 
     setCanonical(url);
+    setAlternates(url);
     setJsonLd(jsonLd);
   }, [title, description, keywords, path, jsonLd, image, location.pathname]);
 
