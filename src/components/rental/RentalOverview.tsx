@@ -27,7 +27,13 @@ const RentalOverview = () => (
           {...fadeInUp}
           transition={{ delay: 0.2, duration: 0.8 }}
         >
-          <img src={gentlemaxImage} alt="GentleMax Pro" className="w-full h-full object-cover" />
+          <img
+            src={gentlemaxImage}
+            alt="GentleMax Pro"
+            className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
         </motion.div>
       </div>
     </div>

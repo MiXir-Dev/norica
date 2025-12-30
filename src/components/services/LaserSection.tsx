@@ -30,6 +30,7 @@ const LaserSection = () => (
             alt="GentleMax Pro laser technology for hair removal"
             className="w-full aspect-square object-cover"
             loading="lazy"
+            decoding="async"
           />
         </div>
 

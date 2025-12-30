@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import treatmentBg from "@/assets/treatment-bg.png";
 import { fadeInSection } from "@/consts/animations";
+import { preloadRoute } from "@/consts/routes";
 
 const HomeTrainingCta = () => (
   <section className="relative py-24 md:py-32 overflow-hidden">
@@ -11,6 +12,7 @@ const HomeTrainingCta = () => (
         aria-hidden="true"
         className="w-full h-full object-cover blur-[2px] saturate-[0.9]"
         loading="lazy"
+        decoding="async"
       />
 
       <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/85 to-primary/90" />
@@ -39,6 +41,8 @@ const HomeTrainingCta = () => (
             href="/training"
             className="training-cta-btn inline-block"
             aria-label="Apply for laser technician training program"
+            onMouseEnter={() => preloadRoute("/training")}
+            onFocus={() => preloadRoute("/training")}
           >
             Apply for Training
           </a>

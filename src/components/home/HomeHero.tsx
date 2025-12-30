@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import heroImage from "@/assets/hero-home.jpg";
 import { fadeBlur } from "@/consts/animations";
 import { BOOK_NOW_URL } from "@/consts/links";
+import { preloadRoute } from "@/consts/routes";
 
 const HomeHero = () => (
   <header className="relative h-screen min-h-[600px] md:min-h-[700px] overflow-hidden">
@@ -10,6 +11,8 @@ const HomeHero = () => (
         src={heroImage}
         alt="Norica Spa aesthetic clinic in Montreal"
         className="w-full h-full object-cover"
+        decoding="async"
+        fetchPriority="high"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent md:hidden" />
@@ -51,7 +54,12 @@ const HomeHero = () => (
             >
               Book Now
             </a>
-            <a href="/training" className="hero-btn-secondary text-center">
+            <a
+              href="/training"
+              className="hero-btn-secondary text-center"
+              onMouseEnter={() => preloadRoute("/training")}
+              onFocus={() => preloadRoute("/training")}
+            >
               Training
             </a>
           </motion.div>

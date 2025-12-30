@@ -1,6 +1,7 @@
 import { Link, NavLink as RouterNavLink } from "react-router-dom";
 import Logo from "@/components/Logo";
 import { NAV_LINKS } from "@/consts/navigation";
+import { preloadRoute } from "@/consts/routes";
 import { BOOK_NOW_URL } from "@/consts/links";
 
 type NavDesktopProps = {
@@ -18,6 +19,8 @@ const NavDesktop = ({ isScrolled }: NavDesktopProps) => (
         <RouterNavLink
           key={link.to}
           to={link.to}
+          onMouseEnter={() => preloadRoute(link.to)}
+          onFocus={() => preloadRoute(link.to)}
           className={({ isActive }) =>
             `relative text-[1.1rem] tracking-wide transition-colors
             ${

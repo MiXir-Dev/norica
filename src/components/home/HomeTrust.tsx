@@ -22,6 +22,8 @@ const HomeTrust = () => (
             src={treatmentImage}
             alt="Treatment room"
             className="w-full h-[380px] md:h-[500px] object-cover rounded-2xl"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute -bottom-3 -right-3 w-24 h-24 bg-accent/15 rounded-2xl -z-10" />
         </figure>

@@ -8,6 +8,8 @@ const ServicesHero = () => (
         src={heroImage}
         alt="Premium laser hair removal and facial treatments at Norica Spa Montreal"
         className="w-full h-full object-cover"
+        decoding="async"
+        fetchPriority="high"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/40 to-primary/70" />
     </div>

@@ -32,6 +32,7 @@ const FacialsSection = () => (
                 alt={`${service.title} treatment at Norica Spa`}
                 className="w-full aspect-[4/3] object-cover"
                 loading="lazy"
+                decoding="async"
               />
             </div>
 
@@ -60,6 +61,7 @@ const FacialsSection = () => (
             alt="Dermalogica professional skincare products"
             className="w-full aspect-[4/3] object-cover"
             loading="lazy"
+            decoding="async"
           />
         </div>
         <div>

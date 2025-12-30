@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { HOME_SERVICES } from "@/consts/home";
 import { fadeInSection } from "@/consts/animations";
+import { preloadRoute } from "@/consts/routes";
 
 const HomeServicesPreview = () => (
   <section className="section-padding bg-secondary/30">
@@ -12,6 +13,8 @@ const HomeServicesPreview = () => (
           <Link
             key={service.title}
             to={service.href}
+            onMouseEnter={() => preloadRoute(service.href)}
+            onFocus={() => preloadRoute(service.href)}
             className="group relative block rounded-xl overflow-hidden bg-card border border-border/30 transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
           >
             <div className="relative overflow-hidden">
@@ -19,6 +22,8 @@ const HomeServicesPreview = () => (
                 src={service.image}
                 alt={service.title}
                 className="aspect-square w-full object-cover transition-all duration-700 group-hover:scale-[1.04] group-hover:contrast-105"
+                loading="lazy"
+                decoding="async"
               />
               <div className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
             </div>

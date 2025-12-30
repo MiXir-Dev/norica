@@ -31,6 +31,8 @@ const TrainingCertification = () => (
             src={certificationImage}
             alt="Certification ceremony"
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
         </motion.div>
       </div>

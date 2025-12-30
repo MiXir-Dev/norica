@@ -10,6 +10,7 @@ import {
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Logo from "@/components/Logo";
 import { NAV_LINKS } from "@/consts/navigation";
+import { preloadRoute } from "@/consts/routes";
 import { BOOK_NOW_URL, INSTAGRAM_URL, PHONE_TEL } from "@/consts/links";
 
 type NavMobileProps = {
@@ -68,6 +69,8 @@ const NavMobile = ({ isScrolled }: NavMobileProps) => (
                 <SheetClose asChild key={link.to}>
                   <Link
                     to={link.to}
+                    onMouseEnter={() => preloadRoute(link.to)}
+                    onFocus={() => preloadRoute(link.to)}
                     className="group rounded-xl px-5 py-4 text-xl font-light tracking-wide text-foreground/90 transition-colors hover:bg-secondary/40 hover:text-foreground"
                   >
                     <span className="inline-flex items-center gap-3">

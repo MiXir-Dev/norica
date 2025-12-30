@@ -9,6 +9,8 @@ const TrainingHero = () => (
         src={heroImage}
         alt="Laser training academy"
         className="w-full h-full object-cover"
+        decoding="async"
+        fetchPriority="high"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
     </div>
