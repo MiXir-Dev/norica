@@ -9,6 +9,7 @@ export const MAPS_URL =
 
 export const PHONE_TEL = "tel:+15145504633";
 export const PHONE_DISPLAY = "(514) 550-4633";
+export const PHONE_E164 = "+15145504633";
 
 export const EMAIL_ADDRESS = "noricaspa@gmail.com";
 export const EMAIL_URL = `mailto:${EMAIL_ADDRESS}`;

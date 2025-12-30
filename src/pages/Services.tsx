@@ -6,6 +6,8 @@ import FacialsSection from "@/components/services/FacialsSection";
 import LaserSection from "@/components/services/LaserSection";
 import ServicesFaq from "@/components/services/ServicesFaq";
 import ServicesFinalCta from "@/components/services/ServicesFinalCta";
+import Seo from "@/components/Seo";
+import { PAGE_JSONLD, PAGE_META } from "@/consts/seo";
 
 const Services = () => {
   useEffect(() => {
@@ -14,6 +16,7 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo {...PAGE_META.services} jsonLd={PAGE_JSONLD.services} />
       <Navigation />
       <ServicesHero />
       <FacialsSection />

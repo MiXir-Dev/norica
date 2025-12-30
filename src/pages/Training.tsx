@@ -7,6 +7,8 @@ import TrainingBenefits from "@/components/training/TrainingBenefits";
 import TrainingCertification from "@/components/training/TrainingCertification";
 import TrainingPrerequisites from "@/components/training/TrainingPrerequisites";
 import TrainingCta from "@/components/training/TrainingCta";
+import Seo from "@/components/Seo";
+import { PAGE_JSONLD, PAGE_META } from "@/consts/seo";
 
 const Training = () => {
   useEffect(() => {
@@ -15,6 +17,7 @@ const Training = () => {
 
   return (
     <div className="min-h-screen">
+      <Seo {...PAGE_META.training} jsonLd={PAGE_JSONLD.training} />
       <Navigation />
       <TrainingHero />
       <TrainingOverview />

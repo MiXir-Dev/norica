@@ -8,6 +8,8 @@ import RentalBenefits from "@/components/rental/RentalBenefits";
 import RentalIdealFor from "@/components/rental/RentalIdealFor";
 import RentalRequirements from "@/components/rental/RentalRequirements";
 import RentalCta from "@/components/rental/RentalCta";
+import Seo from "@/components/Seo";
+import { PAGE_JSONLD, PAGE_META } from "@/consts/seo";
 
 const Rental = () => {
   useEffect(() => {
@@ -16,6 +18,7 @@ const Rental = () => {
 
   return (
     <div className="min-h-screen">
+      <Seo {...PAGE_META.rental} jsonLd={PAGE_JSONLD.rental} />
       <Navigation />
       <RentalHero />
       <RentalOverview />
